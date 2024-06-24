@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/slider.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- start slider section -->
+    <section class="bg-[#F5F6F9] pb-10">
+      <div class="relative bg-cover bg-no-repeat bg-center h-[190px] sm:h-[320px] sm:w-full shadow-sm bg-blend-overlay"
+      style="background-image: url('assets/ngoi-bg.png')"
+      >
+      <div class="absolute inset-0 bg-black opacity-[0.4]"></div>
+    </div>  
+      <div class="max-w-[900px] mx-auto text-[#092140] px-2 py-10 flex flex-col items-center sm:items-start text-center sm:text-start">
+        <h3 class="text-[27px] font-semibold tracking-tight leading-none w-full">Self-Assessment</h3>
+        <div class="text-[15px] font-normal my-4 tracking-normal leading-5">
+          <p class="mb-3">The NGOi Self-Assessment Platform is an interactive user-friendly platform that enables any NGO operating in the Middle East and North Africa region to undergo a self-assessment of its operations, structures, policies, and procedures based on 10 evidence-based standards.</p>
+          <p>Once the self-assessment is completed, a comprehensive report of results is automatically generated. The report features the score obtained for each standard, as well as a total score. Based on the standard-specific scores obtained, tailored performance improvement and capacity building recommendations are presented.</p>
+        </div>
+        <div class="flex items-center justify-center flex-col sm:flex-row mt-[10px] sm:mt-[25px] gap-5 mx-auto">
+          <a 
+          class="w-full sm:w-[130px] border-[2px] border-solid border-[#092140] bg-[#092140] rounded-full text-white font-medium ps-[25px] pr-[17px] py-3 flex items-center justify-between tracking-wide no-underline"
+          href="https://ngoi-isplatform.ghi.aub.edu.lb/ngoi/login"
+          target="_blank"
+          >
+            <span>Login</span>
+            <i class="fa fa-angle-right text-[20px]" aria-hidden="true"></i>
+          </a>
+          <a 
+          class="w-full sm:w-fit border-[2px] border-solid border-[#092140] rounded-full text-[#092140] font-medium ps-[25px] pr-[17px] py-3 flex justify-between items-center gap-5 tracking-wide no-underline"
+          href="https://ngoi-isplatform.ghi.aub.edu.lb/ngoi/cso-signup"
+          target="_blank"
+          >
+            Request Access
+            <i class="fa fa-angle-right text-[20px]" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- end partners section -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+      };
+    </script>
+    <script>
+      let slide = document.querySelectorAll(".events-slide");
+      var current = 0;
+
+      function cls() {
+        for (let i = 0; i < slide.length; i++) {
+          slide[i].style.display = "none";
+        }
+      }
+
+      function next() {
+        cls();
+        if (current === slide.length - 1) current = -1;
+        current++;
+
+        slide[current].style.display = "block";
+        slide[current].style.opacity = 0.4;
+
+        var x = 0.4;
+        var intX = setInterval(function () {
+          x += 0.1;
+          slide[current].style.opacity = x;
+          if (x >= 1) {
+            clearInterval(intX);
+            x = 0.4;
+          }
+        }, 100);
+      }
+
+      function prev() {
+        cls();
+        if (current === 0) current = slide.length;
+        current--;
+
+        slide[current].style.display = "block";
+        slide[current].style.opacity = 0.4;
+
+        var x = 0.4;
+        var intX = setInterval(function () {
+          x += 0.1;
+          slide[current].style.opacity = x;
+          if (x >= 1) {
+            clearInterval(intX);
+            x = 0.4;
+          }
+        }, 100);
+      }
+
+      // automatic slider
+      setInterval(next, 3000);
+
+      function start() {
+        cls();
+        slide[current].style.display = "block";
+      }
+      start();
+    </script>
+  </body>
+</html>
